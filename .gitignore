@@ -3,3 +3,4 @@ Archivos.zip
 node_modules
 .vscode
 .sass-cache
+.env
