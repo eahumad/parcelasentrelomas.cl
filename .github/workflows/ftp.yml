@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
       - name: Copiar a servidor FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
@@ -17,4 +20,4 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
           local-dir: ./public_html/
-          remote-dir: /
+          remote-dir: /public_html
