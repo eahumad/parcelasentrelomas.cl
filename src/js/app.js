@@ -17,6 +17,7 @@ const loadPannellum = () => {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("Entre Lomas")
   setTimeout(function() {
     multiItemCarousel.initMultiItemCarousel()
     loadPannellum()

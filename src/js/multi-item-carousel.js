@@ -5,7 +5,7 @@ export class MultiItemCarousel {
     
   }
 
-  #TODO: enableswipe
+  //TODO: enable swipe
   
 
   initMultiItemCarousel () {
