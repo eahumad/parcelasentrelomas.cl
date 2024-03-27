@@ -5,6 +5,9 @@ export class MultiItemCarousel {
     
   }
 
+  #TODO: enableswipe
+  
+
   initMultiItemCarousel () {
     const carousels = document.getElementsByClassName('multi-item-carousel')
     for (var i = 0; i < carousels.length; i++) {
@@ -85,6 +88,8 @@ export class MultiItemCarousel {
   
     return 0;
   }
+
+
   
   changeItemsPosition( step, carousel ) {
   
