@@ -21,6 +21,7 @@ header {
     display: flex;
 
     .logo {
+      aspect-ratio: 38 / 15;
       margin: 0;
       margin-inline: 15px;
       margin-top: 7px;
@@ -58,7 +59,8 @@ header {
 
 #inicio {
   background-color: rgb(var(--color-primary));
-  padding-top: 86;
+  padding-top: 86px;
+  max-height: 100vh;
   overflow-x: hidden;
   position: relative;
 
@@ -69,6 +71,8 @@ header {
     border-radius: 0 0 $radius $radius;
     max-width: none;
     position: relative;
+    height: calc( 100vh - 86px );
+    //aspect-ratio: 58 / 75;
   }
   div {
     width: calc(100% - 30px);
