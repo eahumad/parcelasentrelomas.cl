@@ -1,0 +1,21 @@
+@use "sass:math";
+.logo {
+  text-align: left;
+  width: $logo-size;
+ 
+    @media(min-width:1000px){
+      
+      img{
+        left:math.div($logo-size,1.6);
+        position: relative;
+      }
+    }
+  
+
+  h1,h2 {
+    font-family: var(--tipo-title);
+    color: var(--color-logo);
+    font-size: math.div($logo-size , 4.5 );
+    line-height:math.div( $logo-size , 5.5);
+  }
+}

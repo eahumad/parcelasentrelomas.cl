@@ -1,0 +1,46 @@
+.cards {
+
+  & > div {
+    position: relative;
+    border-radius: $radius;
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
+    
+    min-height:500px;
+    
+
+    &.radal {
+      background-image: url('/img/radal.jpeg')
+    }
+    &.playa {
+      background-image: url('/img/iloca_01.jpeg')
+    }
+    &.talca {
+      background-image: url('/img/talca.jpeg')
+    }
+
+    div {
+      position: absolute;
+      bottom:0;
+      background: rgb(var(--color-secondary));
+      background: linear-gradient(5deg, rgb(var(--color-secondary)) 0%, rgba(112,23,153,0.0) 100%);
+      color:white;
+      border-radius: 0 0 $radius $radius;
+      padding: 150px 7px 7px 7px;
+
+      h3 {
+        font-weight:700;
+        margin-bottom: 3px;
+      }
+
+      h4 {
+        font-weight: 400;
+        margin-bottom: 7px;
+      }
+      
+    }
+  }
+
+  
+}

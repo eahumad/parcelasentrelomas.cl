@@ -1,0 +1,37 @@
+@use "sass:math";
+$button-size:50px;
+
+
+.menu-button {
+  z-index: 1;
+  width: $button-size;
+  height: $button-size;
+  span {
+    display: block;
+    background-color: rgb(var(--color-primary-dark));
+    width: 100%;
+    height: math.div($button-size,4.5);
+    border-radius: math.div($button-size,4.2);
+
+    transition: all 0.2s;
+
+    &:first-of-type {
+      margin-bottom: math.div($button-size,7);
+    }
+  }
+
+  &.active {
+    span {
+      &:first-of-type {
+        margin-bottom: math.div($button-size,5)*-1;
+        transform: rotate(45deg);
+      }
+      &:last-of-type {
+        transform: rotate(-45deg);
+      }
+      
+    }
+  }
+
+}
+
