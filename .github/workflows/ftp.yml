@@ -13,8 +13,8 @@ jobs:
       - name: Copiar a servidor FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ${{ ftp.HOST }}
-          username: ${{ ftp.USER }}
-          password: ${{ ftp.PASS }}
+          server: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASS }}
           local-dir: ./public_html/
           remote-dir: /
