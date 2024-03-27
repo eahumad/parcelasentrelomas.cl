@@ -1,6 +1,3 @@
-//import * as pannellum from 'pannellum'
-//import { pannellum } from "./panellum";
-
 
 export class Panoramico {
   viewer
