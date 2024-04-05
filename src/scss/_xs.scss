@@ -12,7 +12,7 @@ section {
 }
 
 header {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   background-color : rgb(var(--color-background));
   width: 100%;
@@ -184,15 +184,15 @@ header {
 
 #vista360 {
   text-align: center;
+  background-color: rgb(var(--color-secondary));
   img {
     border-radius: $radius;
-
   }
 }
 
 #cercano {
   padding-bottom: $sp-vertical-primary;
-  background-color: rgb(var(--color-primary)); 
+  background-color: rgb(var(--color-secondary)); 
 
   .cards {
     display: flex;
@@ -207,7 +207,7 @@ header {
 }
 
 #galeria {
-  background-color: rgb(var(--color-secondary));
+  background-color: rgb(var(--color-primary));
   .container {
     display: grid;
     padding-bottom: 100px;
@@ -221,7 +221,8 @@ header {
 }
 
 #contacto {
-  margin-top: $sp-vertical-primary;
+  background-color: rgb(var(--color-secondary));
+  padding-top: $sp-vertical-primary;
   text-align: center;
 
   ul {
@@ -283,7 +284,7 @@ header {
 #owner {
   width: 100%;
   text-align: center;
-  background-color: rgb(var(--color-secondary));
+  background-color: rgb(var(--color-primary));
   color: rgb(var(--color-primary));
   grid-column-start: 1;
   grid-column-end: 3;
