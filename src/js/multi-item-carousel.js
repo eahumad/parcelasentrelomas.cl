@@ -58,7 +58,7 @@ export class MultiItemCarousel {
   
         let idx = micIndicator.dataset.idx
         const scrollWrapper = carousel.querySelector('.mic-scroll-wrapper')
-        let width = scrollWrapper.clientWidth + this.getWidthAjust()
+        let width = scrollWrapper.clientWidth + _this.getWidthAjust()
         console.log( {width,scrollWrapper, left:width*idx}  );
         carousel.querySelector('.mic-indicator.active').classList.remove('active')
         micIndicator.classList.add('active')
