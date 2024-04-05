@@ -461,7 +461,7 @@ section {
 }
 
 header {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   background-color: rgb(var(--color-background));
   width: 100%;
@@ -605,6 +605,7 @@ header > div .menu-button {
 
 #vista360 {
   text-align: center;
+  background-color: rgb(var(--color-secondary));
 }
 #vista360 img {
   border-radius: 15px;
@@ -612,7 +613,7 @@ header > div .menu-button {
 
 #cercano {
   padding-bottom: 30px;
-  background-color: rgb(var(--color-primary));
+  background-color: rgb(var(--color-secondary));
 }
 #cercano .cards {
   display: flex;
@@ -625,7 +626,7 @@ header > div .menu-button {
 }
 
 #galeria {
-  background-color: rgb(var(--color-secondary));
+  background-color: rgb(var(--color-primary));
 }
 #galeria .container {
   display: grid;
@@ -638,7 +639,8 @@ header > div .menu-button {
 }
 
 #contacto {
-  margin-top: 30px;
+  background-color: rgb(var(--color-secondary));
+  padding-top: 30px;
   text-align: center;
 }
 #contacto ul li {
@@ -686,7 +688,7 @@ header > div .menu-button {
 #owner {
   width: 100%;
   text-align: center;
-  background-color: rgb(var(--color-secondary));
+  background-color: rgb(var(--color-primary));
   color: rgb(var(--color-primary));
   grid-column-start: 1;
   grid-column-end: 3;
@@ -810,7 +812,7 @@ header > div .menu-button {
   width: 100%;
 }
 .multi-item-carousel .mic-footer .mic-indicators .mic-indicator {
-  border: 3px solid rgb(var(--color-secondary));
+  border: 3px solid rgb(var(--color-primary));
   background-color: transparent;
   content: "";
   height: 4px;
@@ -940,12 +942,12 @@ header > div .menu-button {
 .multi-item-carousel .carousel-control-next-icon:after {
   content: ">";
   font-size: 65px;
-  color: rgb(var(--color-secondary));
+  color: rgb(var(--color-primary));
 }
 .multi-item-carousel .carousel-control-prev-icon:after {
   content: "<";
   font-size: 65px;
-  color: rgb(var(--color-secondary));
+  color: rgb(var(--color-primary));
 }
 
 .slider-wrap {

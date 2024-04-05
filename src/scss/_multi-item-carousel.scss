@@ -55,7 +55,7 @@
       width: 100%;
 
       .mic-indicator {
-        border: 3px solid rgb(var(--color-secondary));
+        border: 3px solid rgb(var(--color-primary));
         background-color: transparent;
 
         content: '';
@@ -239,12 +239,12 @@
   .carousel-control-next-icon:after {
     content: ">";
     font-size: 65px;
-    color: rgb(var(--color-secondary));
+    color: rgb(var(--color-primary));
   }
 
   .carousel-control-prev-icon:after {
     content: "<";
     font-size: 65px;
-    color: rgb(var(--color-secondary));
+    color: rgb(var(--color-primary));
   }
 }
