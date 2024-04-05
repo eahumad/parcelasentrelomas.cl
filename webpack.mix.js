@@ -4,6 +4,7 @@ mix.setPublicPath('public_html/')
 
 mix
   .options({
+    processCssUrls: false,
     html: {
       minify: {
         collapseWhitespace: true,
@@ -17,6 +18,7 @@ mix
   })
   .js('src/js/app.js', 'public_html/assets')
   .sass('src/scss/app.scss', 'public_html/assets')
+  .sourceMaps(true, 'source-map')
   .copy('src/img/*.webp', 'public_html/images/')
   .copy('src/json/lugares.json', 'public_html/js/')
   .copy('src/json/propiedades.json', 'public_html/js/')
@@ -31,7 +33,6 @@ mix
   .copy('src/templates/*.html', 'public_html/templates/')
 
 mix.version()
-  .sourceMaps()
 
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
