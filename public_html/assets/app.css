@@ -5,6 +5,7 @@
   --color-primary-dark: 50, 132, 84;
   --color-secondary: 255, 210, 152;
   --color-background: 251,251,251;
+  --color-text: 17, 39, 25;
   --color-logo: #56a044;
   --tipo-title: "Staatliches", Impact, sans-serif;
   --tipo-principal: "Montserrat", Helvetica, Arial, sans-serif;
@@ -123,7 +124,7 @@ body {
   min-height: 100vh;
   font-size: 100%;
   font-family: var(--tipo-principal);
-  color: rgb(var(--color-primary-dark));
+  color: rgb(var(--color-text));
   /* opcional */
   line-height: 1.4em;
   /* opcional */
@@ -141,7 +142,7 @@ h2 {
   font-weight: 700;
   font-size: 1.6rem;
   margin-bottom: 1.5rem;
-  color: rgb(var(--color-primary-dark));
+  color: rgb(var(--color-text));
 }
 
 p {
@@ -552,7 +553,6 @@ header > div .menu-button {
 #proyecto {
   padding-bottom: 20px;
   background-color: rgb(var(--color-primary));
-  color: rgb(var(--color-primary-dark));
 }
 #proyecto article {
   text-align: center;
@@ -582,13 +582,14 @@ header > div .menu-button {
   border-radius: 15px;
 }
 #proyecto .boxes img:first-of-type {
-  grid-row-start: 1;
-  grid-row-end: 1;
+  grid-row-start: 5;
+  grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
 }
 #proyecto .boxes div {
   background-color: rgb(var(--color-secondary));
+  color: rgb(var(--color-primary-dark));
   border-radius: 15px;
   padding: 15px;
 }
@@ -646,6 +647,9 @@ header > div .menu-button {
   margin-bottom: 20px;
 }
 #contacto ul li a {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
   background-color: rgb(var(--color-primary));
   padding: 22px;
   border-radius: 15px;
@@ -668,7 +672,7 @@ header > div .menu-button {
 }
 #contacto nav .logo {
   width: 100%;
-  max-width: 250px;
+  max-width: 152px;
 }
 #contacto nav ul {
   width: 40%;
@@ -738,9 +742,6 @@ header > div .menu-button {
   #galeria .container {
     grid-template-columns: 1fr 1fr;
   }
-  #contacto ul li {
-    display: inline-block;
-  }
   #contacto nav {
     flex-direction: column;
   }
@@ -754,6 +755,9 @@ header > div .menu-button {
     margin: initial;
     width: initial;
     margin: 20px;
+  }
+  #contacto nav ul li {
+    display: inline-block;
   }
   #contacto nav ul li a {
     margin: 20px;
@@ -943,3 +947,88 @@ header > div .menu-button {
   font-size: 65px;
   color: rgb(var(--color-secondary));
 }
+
+.slider-wrap {
+  position: relative;
+}
+.slider-wrap .slider-inner {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+.slider-wrap .slider-inner .slide {
+  transition: all 0.2s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  text-align: center;
+  padding: 0;
+  transition: all 0.2s ease-in;
+  opacity: 0;
+  visibility: hidden;
+}
+.slider-wrap .slider-inner .slide img {
+  aspect-ratio: 16/9;
+}
+.slider-wrap .slider-inner .slide .caption {
+  background-color: rgba(var(--color-secondary), 0.8);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 14px 14px;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.slider-wrap .slider-inner .slide.active {
+  display: block;
+  position: relative;
+  top: unset;
+  left: unset;
+  right: unset;
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+}
+
+.next-previous-navigation {
+  display: flex;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  font-size: 2rem;
+  line-height: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.next-previous-navigation .next, .next-previous-navigation .previous {
+  cursor: pointer;
+  padding: 20px 10px;
+  color: #fff;
+  width: auto;
+  height: 18px;
+  stroke-width: 1.5px;
+  stroke: currentColor;
+}
+.next-previous-navigation .next.next, .next-previous-navigation .previous.next {
+  margin-left: auto;
+}
+.next-previous-navigation .next.previous, .next-previous-navigation .previous.previous {
+  margin-right: auto;
+}
+.next-previous-navigation .next svg, .next-previous-navigation .previous svg {
+  width: auto;
+  height: 35px;
+  stroke-width: 2.5px;
+  stroke: #fff;
+  fill: #fff;
+}
+
+/*# sourceMappingURL=app.css.map*/

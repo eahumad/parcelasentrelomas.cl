@@ -1,0 +1,95 @@
+// https://codepen.io/m_talha_amjad/pen/OJaNGRV 
+
+.slider-wrap {
+  position: relative;
+
+
+
+  .slider-inner {
+      width: 100%;
+      text-align: center;
+      position: relative;
+      padding: 0;
+      margin: 0;
+
+      .slide {
+          transition: all 0.2s;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 0;
+          text-align: center;
+          padding: 0;
+          transition: all 0.2s ease-in;
+          opacity: 0;
+          visibility: hidden;
+
+          img {
+            aspect-ratio: 16 / 9;
+          }
+
+          .caption {
+            background-color: rgba(var(--color-secondary),0.8);
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            border-radius: 0 0 $radius-less $radius-less;
+            font-weight: bold;
+            padding-top: 4px;
+            padding-bottom: 4px;
+          }
+
+          &.active {
+              display: block;
+              position: relative;
+              top: unset;
+              left: unset;
+              right: unset;
+              z-index: 1;
+              opacity: 1;
+              visibility: visible;
+          }
+      }
+  }
+}
+
+// Slider - Next / Previous Buttons
+.next-previous-navigation {
+  display: flex;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  font-size: 2rem;
+  line-height: 1;
+  user-select: none;
+
+  .next, .previous {
+      cursor: pointer;
+      padding: 20px 10px;
+      color: #fff;
+
+      &.next {
+          margin-left: auto;
+      }
+
+      &.previous {
+          margin-right: auto;
+      }
+
+      width: auto;
+      height: 18px;
+      stroke-width: 1.5px;
+      stroke: currentColor;
+
+      svg {
+          width: auto;
+          height: 35px;
+          stroke-width: 2.5px;
+          stroke: #fff;
+          fill: #fff;
+      }
+  }
+}
