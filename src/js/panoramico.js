@@ -29,28 +29,32 @@ export class Panoramico {
       this.irAContacto()
     })
 
-    document.addEventListener('click', function(event) {
+    //TODO: 
+    this.viewer
+    console.log('panoramico asd')
+
+    document.addEventListener('click', function (event) {
       let target = event.target
       // If the clicked element doesn't have the right selector, bail
       if (!target.matches('.hotspot-lote')) return
-  
+
       // Don't follow the link
       event.preventDefault()
-  
-  
+
+
       let haveActive = target.classList.contains('active')
-  
-      let elementos = document.getElementsByClassName('hotspot-lote');
-  
-  
+
+      let elementos = document.getElementsByClassName('hotspot-lote')
+
+
       Array.from(elementos).forEach(function (elemento) {
         elemento.classList.remove('active')
       })
-  
+
       // Log the clicked element in the console
       target.classList.toggle('active')
-  
-    }, false);
+
+    }, false)
 
   }
 
@@ -72,9 +76,11 @@ export class Panoramico {
   generateHotspot(points) {
     let response = []
     points.filter((point) => point.visible).forEach(point => {
+      console.log(point)
       if (point.isLugar) {
-        console.log({ point })
         response.push(this.generateLugarHostpost(point))
+      } else if(point.isPlano) {
+        //response.push(this.addPlano(point))
       } else { //generar Hostpo
         response.push(this.generateAHotspot(point))
       }
@@ -90,24 +96,40 @@ export class Panoramico {
     let _this = this
     let params = this.getViewerParams()
 
-    //const lotes = await this.getJson('propiedades')
-    //const lugares = await this.getJson('lugares')
+    const lotes = await this.getJson('propiedades')
+    const lugares = await this.getJson('lugares')
 
-    const lotes = []
-    const lugares = []
-    
 
 
     document.getElementById("panorama").style.height = params.height + "px"
 
-    this.viewer = pannellum.viewer('panorama', {
+   /*  this.viewer = pannellum.viewer('panorama', {
+      "sceneId":"main",
       "autoLoad": true,
       "type": "equirectangular",
-      "panorama": "/images/panorama_2.webp",
+      "panorama": "/images/pano_l.webp",
       "pitch": params.pitch,
       "yaw": params.yaw,
       "hfov": params.hfov,
       "hotSpots": this.generateHotspot([...lotes, ...lugares])
+    }) */
+
+    this.viewer = pannellum.viewer('panorama', {
+      "type": "multires",
+      "autoLoad": true,
+      "hotSpots": this.generateHotspot([...lotes, ...lugares]),
+      "pitch": params.pitch,
+      "yaw": params.yaw,
+      "hfov": params.hfov,
+      "multiRes": {
+          "basePath": "/images/pano",
+          "path": "/%l/%s%y_%x",
+          "fallbackPath": "/fallback/%s",
+          "extension": "webp",
+          "tileResolution": 512,
+          "maxLevel": 4,
+          "cubeResolution": 2600
+      }
     })
 
     //Print cords
@@ -116,14 +138,29 @@ export class Panoramico {
       console.log(cords)
     })
 
+    /* setTimeout(() => {
+      this.changeScene(this.viewer,'/images/pano_xl.webp',params, lotes, lugares )
+    }, 10000); */
+
+  }
+
+  changeScene(viewer, image_path, params, lotes, lugares) {
+    viewer.addScene('newScene', {
+      "type": "equirectangular",
+      "panorama": image_path,
+      "pitch": params.pitch,
+      "yaw": params.yaw,
+      "hfov": params.hfov,
+      "hotSpots": this.generateHotspot([...lotes, ...lugares])
+    })
   }
 
   getViewerParams() {
     let params = {
       /* pitch : -67.49588568441906,
       yaw : 115.70633233176454, */
-      pitch: -9,
-      yaw: 147,
+      pitch: -79,
+      yaw: 80,
       hfov: 200,
       height: window.innerHeight - 100,
     }
@@ -176,6 +213,25 @@ export class Panoramico {
       <div class="line"></div>
       <div class="dot"></div>
       <div class="clear" style="height:${clearHeight}px;"></div>
+</div>
+      `
+      }
+    }
+  }
+
+  addPlano(plano) {
+    return {}
+    console.log('addPlano', plano)
+    return {
+      "pitch": plano.pitch,
+      "yaw": plano.yaw,
+      "cssClass": "hotspot-plano",
+      "createTooltipArgs": plano,
+      "createTooltipFunc": (hotSpotDiv, plano) => {
+        //let clearHeight = (Math.floor(lugar.nombre.length / 12) + 1) * 55
+        hotSpotDiv.innerHTML = `<div>
+  <span>plano</span>
+  <img src="/images/plano.webp">
 </div>
       `
       }

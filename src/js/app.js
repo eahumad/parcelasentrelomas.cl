@@ -11,6 +11,13 @@ const panoramico = new Panoramico()
 
 const slider = new Slider()
 
+function getAnchor() {
+  var currentUrl = document.URL,
+    urlParts = currentUrl.split('#')
+
+  return (urlParts.length > 1) ? urlParts[1] : null
+}
+
 const loadPannellum = () => {
   const script = document.createElement('script')
   script.onload = () => { console.log('script loaded!') }
@@ -26,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     loadPannellum()
     setTimeout(function () {
       panoramico.init()
+      let anchor = getAnchor()
+      console.log({anchor})
+      window.location.replace('#'+anchor)
     }, 500)
 
   }, 500)

@@ -256,7 +256,7 @@ p {
 
 #panorama {
   width: 100%;
-  height: 500px;
+  height: calc(100vh - 100px);
 }
 #panorama #controls {
   position: absolute;
@@ -335,6 +335,11 @@ p {
   display: none;
 }
 
+.pnlm-hotspot-base.hotspot-plano {
+  color: red;
+  min-width: 100px;
+  min-height: 100px;
+}
 .pnlm-hotspot-base.hotspot-lugar {
   background-color: transparent;
   min-height: 25px;
@@ -569,6 +574,7 @@ header > div .menu-button {
   text-align: left;
 }
 #proyecto article img {
+  aspect-ratio: 299/168;
   border-radius: 15px;
 }
 #proyecto .boxes {
@@ -952,6 +958,7 @@ header > div .menu-button {
 
 .slider-wrap {
   position: relative;
+  aspect-ratio: 16/9;
 }
 .slider-wrap .slider-inner {
   width: 100%;
