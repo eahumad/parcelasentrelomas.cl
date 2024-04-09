@@ -44,10 +44,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     setTimeout(function () {
       panoramico.init();
       var anchor = getAnchor();
-      console.log({
-        anchor: anchor
-      });
-      window.location.replace('#' + anchor);
+      if (anchor) {
+        window.location.replace('#' + anchor);
+      }
     }, 500);
   }, 500);
 });
