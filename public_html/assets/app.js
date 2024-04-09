@@ -618,9 +618,12 @@ var Panoramico = /*#__PURE__*/function () {
       });
       var content = document.querySelector('#panorama #details .content');
       var innerDiv = document.createElement('div');
-      var txt = "\n  <h6>Lote ".concat(lote.numero, "</h6>\n\n  Estado: ").concat(lote.estado, "<br>\n  Superficie: ").concat(parseInt(lote.mts).toLocaleString('es-CL'), " m2<br>\n\n  Tipo: ").concat(lote.tipo, "<br>\n");
+      var txt = "\n  <h6>Lote ".concat(lote.numero, "</h6>\n\n  Estado: ").concat(lote.estado, "<br>\n  Superficie \xFAtil: ").concat(parseInt(lote.mts).toLocaleString('es-CL'), " m&sup2;<br>\n\n");
       if (parseInt(lote.uf)) {
         txt = txt + "Valor: ".concat(parseInt(lote.uf).toLocaleString('es-CL'), " UF<br>");
+      }
+      if (parseInt(lote.clp)) {
+        txt = txt + "Valor: $".concat(lote.clp, "<br>");
       }
       content.innerHTML = txt;
       document.querySelector('#panorama #details').classList.add('active');

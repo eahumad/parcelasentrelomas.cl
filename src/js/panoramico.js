@@ -280,13 +280,16 @@ export class Panoramico {
   <h6>Lote ${lote.numero}</h6>
 
   Estado: ${lote.estado}<br>
-  Superficie: ${parseInt(lote.mts).toLocaleString('es-CL')} m2<br>
+  Superficie útil: ${parseInt(lote.mts).toLocaleString('es-CL')} m&sup2;<br>
 
-  Tipo: ${lote.tipo}<br>
 `
 
     if (parseInt(lote.uf)) {
       txt = txt + `Valor: ${parseInt(lote.uf).toLocaleString('es-CL')} UF<br>`
+    }
+
+    if (parseInt(lote.clp)) {
+      txt = txt + `Valor: $${lote.clp}<br>`
     }
 
     content.innerHTML = txt
