@@ -20,6 +20,8 @@ mix
   .sass('src/scss/app.scss', 'public_html/assets')
   .sourceMaps(true, 'source-map')
   .copy('src/img/*.webp', 'public_html/images/')
+  .copy('src/img/pano', 'public_html/images/pano')
+  .copy('src/.htaccess', 'public_html/')
   .copy('src/json/lugares.json', 'public_html/js/')
   .copy('src/json/propiedades.json', 'public_html/js/')
   //.copy('src/img/*.png', 'public_html/img/')

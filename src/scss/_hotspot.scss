@@ -1,4 +1,10 @@
 .pnlm-hotspot-base {
+
+  &.hotspot-plano {
+    color: red;
+    min-width: 100px;
+    min-height: 100px;
+  }
   
   &.hotspot-lugar {
     background-color: transparent;
