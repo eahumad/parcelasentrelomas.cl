@@ -3,7 +3,7 @@
   text-align: left;
   width: $logo-size;
  
-    @media(min-width:1000px){
+    @media(min-width: $l){
       
       img{
         left:math.div($logo-size,1.6);

@@ -12,6 +12,16 @@
 }
 
 /* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: 10,58,42;
+    --color-primary-dark: 239,251,241;
+    --color-secondary: 19,122,99;
+    --color-background: 19,122,99;
+    --color-text: 239,251,241;
+    --color-logo: #56a044;
+  }
+}
 /* Opcional */
 /* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
 /* Opcional */
@@ -189,6 +199,22 @@ p {
   transform: rotate(-45deg);
 }
 
+.button, #cotizar ul li a, #comollegar a, #modal-nav ul li #link-cotizar {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  background-color: rgb(var(--color-primary));
+  padding: 22px;
+  border-radius: 15px;
+  font-weight: 700;
+}
+.button img, #cotizar ul li a img, #comollegar a img, #modal-nav ul li #link-cotizar img {
+  display: inline;
+  width: 30px;
+  margin-bottom: -9px;
+  margin-right: 9px;
+}
+
 #modal-nav {
   position: fixed;
   top: -200%;
@@ -210,11 +236,15 @@ p {
   font-size: 1.7rem;
   line-height: 3.5rem;
   font-weight: 400;
+  text-transform: uppercase;
 }
 #modal-nav ul li.active a {
   color: rgb(var(--color-primary-dark));
   text-decoration: underline;
   font-weight: 700;
+}
+#modal-nav ul li #link-cotizar {
+  padding: 0px 10px;
 }
 
 @media (min-width: 1000px) {
@@ -232,16 +262,21 @@ p {
   }
   #modal-nav ul li {
     display: inline-block;
-    margin-left: 13px;
-    margin-right: 13px;
-    font-size: 1.5rem;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1280px) {
+  #modal-nav ul li {
+    font-size: 1rem;
   }
 }
 .logo {
   text-align: left;
   width: 8rem;
 }
-@media (min-width: 1000px) {
+@media (min-width: 1280px) {
   .logo img {
     left: 5rem;
     position: relative;
@@ -586,6 +621,7 @@ header > div .menu-button {
 }
 #proyecto .boxes img {
   border-radius: 15px;
+  aspect-ratio: 299/168;
 }
 #proyecto .boxes img:first-of-type {
   grid-row-start: 5;
@@ -642,51 +678,100 @@ header > div .menu-button {
 }
 #galeria .container img {
   border-radius: 15px;
+  aspect-ratio: 89/50;
 }
 
-#contacto {
+#comollegar {
+  order: 6;
+  padding-bottom: 30px;
   background-color: rgb(var(--color-secondary));
+  text-align: center;
+  /* Posicionamiento personalizado de los botones */
+}
+#comollegar a {
+  margin-top: 15px;
+}
+#comollegar #map {
+  height: 500px;
+  width: 100%;
+}
+#comollegar .zoom-button {
+  background-color: rgb(var(--color-primary));
+  font-size: 14px;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 100%;
+  font-weight: 600;
+  margin-bottom: 5px;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+}
+#comollegar .zoom-button svg {
+  display: block;
+}
+#comollegar .zoom-button.zoom-in {
+  margin-bottom: 5px;
+}
+#comollegar .zoom-button.zoom-out {
+  margin-top: 30px;
+}
+#comollegar .fullscreen-button {
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 15px;
+  background-color: rgb(var(--color-primary));
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#comollegar .gm-style .zoom-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+#comollegar .gm-style .fullscreen-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#cotizar {
+  background-color: rgb(var(--color-primary));
   padding-top: 30px;
   text-align: center;
 }
-#contacto ul li {
+#cotizar ul li {
   text-align: left;
   display: block;
   margin-bottom: 20px;
 }
-#contacto ul li a {
-  max-width: 700px;
-  margin: auto;
-  text-align: center;
-  background-color: rgb(var(--color-primary));
-  padding: 22px;
-  border-radius: 15px;
-  font-weight: 700;
+#cotizar ul li a {
+  background-color: rgb(var(--color-secondary));
 }
-#contacto ul li a img {
-  display: inline;
-  width: 30px;
-  margin-bottom: -9px;
-  margin-right: 9px;
-}
-#contacto nav {
+#cotizar nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-#contacto nav div {
+#cotizar nav div {
   width: 50%;
   margin-left: 10%;
 }
-#contacto nav .logo {
+#cotizar nav .logo {
   width: 100%;
   max-width: 152px;
 }
-#contacto nav ul {
+#cotizar nav ul {
   width: 40%;
   margin-left: 10%;
 }
-#contacto nav ul li a {
+#cotizar nav ul li a {
   background-color: initial;
   padding: initial;
 }
@@ -694,7 +779,7 @@ header > div .menu-button {
 #owner {
   width: 100%;
   text-align: center;
-  background-color: rgb(var(--color-primary));
+  background-color: rgb(var(--color-secondary));
   color: rgb(var(--color-primary));
   grid-column-start: 1;
   grid-column-end: 3;
@@ -750,24 +835,24 @@ header > div .menu-button {
   #galeria .container {
     grid-template-columns: 1fr 1fr;
   }
-  #contacto nav {
+  #cotizar nav {
     flex-direction: column;
   }
-  #contacto nav div {
+  #cotizar nav div {
     width: 100%;
     margin: initial;
     display: flex;
     justify-content: center;
   }
-  #contacto nav ul {
+  #cotizar nav ul {
     margin: initial;
     width: initial;
     margin: 20px;
   }
-  #contacto nav ul li {
+  #cotizar nav ul li {
     display: inline-block;
   }
-  #contacto nav ul li a {
+  #cotizar nav ul li a {
     margin: 20px;
   }
 }
