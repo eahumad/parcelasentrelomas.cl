@@ -2,14 +2,14 @@ import { Menu } from "./menu"
 import { MultiItemCarousel } from "./multi-item-carousel"
 import { Panoramico } from "./panoramico"
 import { Slider } from "./slider"
+import { ComoLlegar } from "./como_llegar"
 
 const menu = new Menu()
 menu.init()
 const multiItemCarousel = new MultiItemCarousel()
-
 const panoramico = new Panoramico()
-
 const slider = new Slider()
+const comoLlegar = new ComoLlegar()
 
 function getAnchor() {
   var currentUrl = document.URL,
@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   setTimeout(function () {
     slider.initSlider()
     multiItemCarousel.initMultiItemCarousel()
+    comoLlegar.initMap()
     loadPannellum()
     setTimeout(function () {
       panoramico.init()

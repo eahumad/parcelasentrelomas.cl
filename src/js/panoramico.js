@@ -29,10 +29,7 @@ export class Panoramico {
       this.irAContacto()
     })
 
-    //TODO: 
     this.viewer
-    console.log('panoramico asd')
-
     document.addEventListener('click', function (event) {
       let target = event.target
       // If the clicked element doesn't have the right selector, bail
@@ -60,13 +57,11 @@ export class Panoramico {
 
 
   cerrarDetails = async function () {
-    console.log('cerrar details')
     document.querySelector('#panorama #details').classList.remove('active')
   }
 
   irAContacto = async function () {
-    console.log('ir a contacto')
-    window.location.href = ("" + window.location).replace(/#[A-Za-z0-9_]*$/, '') + "#contacto"
+    window.location.href = ("" + window.location).replace(/#[A-Za-z0-9_]*$/, '') + "#cotizar"
   }
 
 
@@ -76,7 +71,6 @@ export class Panoramico {
   generateHotspot(points) {
     let response = []
     points.filter((point) => point.visible).forEach(point => {
-      console.log(point)
       if (point.isLugar) {
         response.push(this.generateLugarHostpost(point))
       } else if(point.isPlano) {
@@ -135,25 +129,10 @@ export class Panoramico {
     //Print cords
     this.viewer.on('mousedown', function (e) {
       let cords = _this.viewer.mouseEventToCoords(e)
-      console.log(cords)
-    })
-
-    /* setTimeout(() => {
-      this.changeScene(this.viewer,'/images/pano_xl.webp',params, lotes, lugares )
-    }, 10000); */
-
-  }
-
-  changeScene(viewer, image_path, params, lotes, lugares) {
-    viewer.addScene('newScene', {
-      "type": "equirectangular",
-      "panorama": image_path,
-      "pitch": params.pitch,
-      "yaw": params.yaw,
-      "hfov": params.hfov,
-      "hotSpots": this.generateHotspot([...lotes, ...lugares])
+      //console.log(cords)
     })
   }
+
 
   getViewerParams() {
     let params = {
@@ -219,24 +198,6 @@ export class Panoramico {
     }
   }
 
-  addPlano(plano) {
-    return {}
-    console.log('addPlano', plano)
-    return {
-      "pitch": plano.pitch,
-      "yaw": plano.yaw,
-      "cssClass": "hotspot-plano",
-      "createTooltipArgs": plano,
-      "createTooltipFunc": (hotSpotDiv, plano) => {
-        //let clearHeight = (Math.floor(lugar.nombre.length / 12) + 1) * 55
-        hotSpotDiv.innerHTML = `<div>
-  <span>plano</span>
-  <img src="/images/plano.webp">
-</div>
-      `
-      }
-    }
-  }
 
   generateAHotspot(lote) {
     return {

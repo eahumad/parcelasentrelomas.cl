@@ -13,6 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _multi_item_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./multi-item-carousel */ "./src/js/multi-item-carousel.js");
 /* harmony import */ var _panoramico__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./panoramico */ "./src/js/panoramico.js");
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+/* harmony import */ var _como_llegar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./como_llegar */ "./src/js/como_llegar.js");
+
 
 
 
@@ -22,6 +24,7 @@ menu.init();
 var multiItemCarousel = new _multi_item_carousel__WEBPACK_IMPORTED_MODULE_1__.MultiItemCarousel();
 var panoramico = new _panoramico__WEBPACK_IMPORTED_MODULE_2__.Panoramico();
 var slider = new _slider__WEBPACK_IMPORTED_MODULE_3__.Slider();
+var comoLlegar = new _como_llegar__WEBPACK_IMPORTED_MODULE_4__.ComoLlegar();
 function getAnchor() {
   var currentUrl = document.URL,
     urlParts = currentUrl.split('#');
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   setTimeout(function () {
     slider.initSlider();
     multiItemCarousel.initMultiItemCarousel();
+    comoLlegar.initMap();
     loadPannellum();
     setTimeout(function () {
       panoramico.init();
@@ -50,6 +54,126 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }, 500);
   }, 500);
 });
+
+/***/ }),
+
+/***/ "./src/js/como_llegar.js":
+/*!*******************************!*\
+  !*** ./src/js/como_llegar.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ComoLlegar: () => (/* binding */ ComoLlegar)
+/* harmony export */ });
+/* harmony import */ var _json_mapstyle_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../json/mapstyle.json */ "./src/json/mapstyle.json");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+var ComoLlegar = /*#__PURE__*/function () {
+  function ComoLlegar() {
+    _classCallCheck(this, ComoLlegar);
+  }
+  _createClass(ComoLlegar, [{
+    key: "initMap",
+    value: function initMap() {
+      var _this = this;
+      var myLatLng = {
+        lat: -35.480029,
+        lng: -71.194079
+      };
+      var mapOptions = {
+        center: myLatLng,
+        zoom: 11,
+        disableDefaultUI: true,
+        styles: _json_mapstyle_json__WEBPACK_IMPORTED_MODULE_0__
+      };
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Entre Lomas',
+        icon: 'images/pin.webp'
+      });
+      var customButtonDiv = document.createElement('div');
+      customButtonDiv.className = 'custom-buttons';
+      var zoomInButton = document.createElement('button');
+      zoomInButton.innerHTML = '<i class="fa fa-plus"></i>';
+      zoomInButton.className = 'zoom-button zoom-in';
+      zoomInButton.addEventListener('click', function () {
+        map.setZoom(map.getZoom() + 1);
+      });
+      customButtonDiv.appendChild(zoomInButton);
+      var zoomOutButton = document.createElement('button');
+      zoomOutButton.innerHTML = '<i class="fa fa-minus"></i>';
+      zoomOutButton.className = 'zoom-button zoom-out';
+      zoomOutButton.addEventListener('click', function () {
+        map.setZoom(map.getZoom() - 1);
+      });
+      customButtonDiv.appendChild(zoomOutButton);
+      var fullscreenButton = document.createElement('button');
+      fullscreenButton.innerHTML = '<i class="fa-solid fa-expand"></i>';
+      fullscreenButton.className = 'fullscreen-button';
+      fullscreenButton.addEventListener('click', function () {
+        console.log(map);
+        if (_this.isFullscreen(map)) {
+          _this.exitFullscreen(fullscreenButton);
+        } else {
+          _this.requestFullscreen(map, fullscreenButton);
+        }
+      });
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(fullscreenButton);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(customButtonDiv);
+    }
+  }, {
+    key: "isFullscreen",
+    value: function isFullscreen(map) {
+      var element = map.getDiv().firstChild;
+      return (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) == element;
+    }
+  }, {
+    key: "requestFullscreen",
+    value: function requestFullscreen(map, fullscreenButton) {
+      var element = map.getDiv().firstChild;
+      if (element.requestFullscreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-compress"></i>';
+        element.requestFullscreen();
+      } else if (element.webkitRequestFullScreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-compress"></i>';
+        element.webkitRequestFullScreen();
+      } else if (element.mozRequestFullScreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-compress"></i>';
+        element.mozRequestFullScreen();
+      } else if (element.msRequestFullScreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-compress"></i>';
+        element.msRequestFullScreen();
+      }
+    }
+  }, {
+    key: "exitFullscreen",
+    value: function exitFullscreen(fullscreenButton) {
+      if (document.exitFullscreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-expand"></i>';
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-expand"></i>';
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-expand"></i>';
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-expand"></i>';
+        document.msExitFullscreen();
+      }
+    }
+  }]);
+  return ComoLlegar;
+}();
 
 /***/ }),
 
@@ -366,10 +490,7 @@ var Panoramico = /*#__PURE__*/function () {
             (_document$querySelect2 = document.querySelector('#panorama #details .contactar')) === null || _document$querySelect2 === void 0 || _document$querySelect2.addEventListener('click', function (e) {
               _this2.irAContacto();
             });
-
-            //TODO: 
             this.viewer;
-            console.log('panoramico asd');
             document.addEventListener('click', function (event) {
               var target = event.target;
               // If the clicked element doesn't have the right selector, bail
@@ -386,7 +507,7 @@ var Panoramico = /*#__PURE__*/function () {
               // Log the clicked element in the console
               target.classList.toggle('active');
             }, false);
-          case 6:
+          case 5:
           case "end":
             return _context2.stop();
         }
@@ -396,9 +517,8 @@ var Panoramico = /*#__PURE__*/function () {
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            console.log('cerrar details');
             document.querySelector('#panorama #details').classList.remove('active');
-          case 2:
+          case 1:
           case "end":
             return _context3.stop();
         }
@@ -408,9 +528,8 @@ var Panoramico = /*#__PURE__*/function () {
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            console.log('ir a contacto');
-            window.location.href = ("" + window.location).replace(/#[A-Za-z0-9_]*$/, '') + "#contacto";
-          case 2:
+            window.location.href = ("" + window.location).replace(/#[A-Za-z0-9_]*$/, '') + "#cotizar";
+          case 1:
           case "end":
             return _context4.stop();
         }
@@ -465,12 +584,8 @@ var Panoramico = /*#__PURE__*/function () {
             //Print cords
             _this3.viewer.on('mousedown', function (e) {
               var cords = _this.viewer.mouseEventToCoords(e);
-              console.log(cords);
+              //console.log(cords)
             });
-
-            /* setTimeout(() => {
-              this.changeScene(this.viewer,'/images/pano_xl.webp',params, lotes, lugares )
-            }, 10000); */
           case 11:
           case "end":
             return _context5.stop();
@@ -493,7 +608,6 @@ var Panoramico = /*#__PURE__*/function () {
       points.filter(function (point) {
         return point.visible;
       }).forEach(function (point) {
-        console.log(point);
         if (point.isLugar) {
           response.push(_this4.generateLugarHostpost(point));
         } else if (point.isPlano) {
@@ -505,18 +619,6 @@ var Panoramico = /*#__PURE__*/function () {
       });
       response.push(this.generateDisableMouseHotSpot());
       return response;
-    }
-  }, {
-    key: "changeScene",
-    value: function changeScene(viewer, image_path, params, lotes, lugares) {
-      viewer.addScene('newScene', {
-        "type": "equirectangular",
-        "panorama": image_path,
-        "pitch": params.pitch,
-        "yaw": params.yaw,
-        "hfov": params.hfov,
-        "hotSpots": this.generateHotspot([].concat(_toConsumableArray(lotes), _toConsumableArray(lugares)))
-      });
     }
   }, {
     key: "getViewerParams",
@@ -562,22 +664,6 @@ var Panoramico = /*#__PURE__*/function () {
         "createTooltipFunc": function createTooltipFunc(hotSpotDiv, lugar) {
           var clearHeight = (Math.floor(lugar.nombre.length / 12) + 1) * 55;
           hotSpotDiv.innerHTML = "<div>\n      <span>".concat(lugar.nombre, "</span>\n      <div class=\"line\"></div>\n      <div class=\"dot\"></div>\n      <div class=\"clear\" style=\"height:").concat(clearHeight, "px;\"></div>\n</div>\n      ");
-        }
-      };
-    }
-  }, {
-    key: "addPlano",
-    value: function addPlano(plano) {
-      return {};
-      console.log('addPlano', plano);
-      return {
-        "pitch": plano.pitch,
-        "yaw": plano.yaw,
-        "cssClass": "hotspot-plano",
-        "createTooltipArgs": plano,
-        "createTooltipFunc": function createTooltipFunc(hotSpotDiv, plano) {
-          //let clearHeight = (Math.floor(lugar.nombre.length / 12) + 1) * 55
-          hotSpotDiv.innerHTML = "<div>\n  <span>plano</span>\n  <img src=\"/images/plano.webp\">\n</div>\n      ";
         }
       };
     }
@@ -724,6 +810,16 @@ var Slider = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "./src/json/mapstyle.json":
+/*!********************************!*\
+  !*** ./src/json/mapstyle.json ***!
+  \********************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('[{"elementType":"labels","stylers":[{"saturation":-20}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"poi.business","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"transit","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"transit.station","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"off"},{"lightness":5},{"saturation":-20}]},{"featureType":"transit.station","stylers":[{"visibility":"off"}]},{"featureType":"landscape","stylers":[{"hue":"#BDD796"},{"visibility":"on"},{"lightness":5},{"saturation":-20}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"on"},{"lightness":5},{"saturation":-20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"hue":"#BDD796"},{"visibility":"on"},{"lightness":100},{"saturation":-20}]},{"featureType":"transit.line","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#8FD7C6"},{"visibility":"on"},{"lightness":5},{"saturation":-20}]}]');
 
 /***/ })
 

@@ -16,7 +16,14 @@
 /* Las adaptamos al modo oscuro */
 @media (prefers-color-scheme: dark) {
   :root{
-      
+    --color-primary : 10,58,42;
+    --color-primary-dark : 239,251,241;
+    --color-secondary : 19,122,99;
+    --color-background : 19,122,99;
+    --color-text: 239,251,241;
+    
+    --color-logo : #56a044;
+  
   }
 }
 

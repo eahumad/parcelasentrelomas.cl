@@ -44,6 +44,7 @@ include dirname(__FILE__) . '/config.php';
         <li><a href="/#vista360">Vista 360</a></li>
         <li><a href="/#cercano">Cercano</a></li>
         <li><a href="/#galeria">Galería</a></li>
+        <li><a href="/#como_llegar">¿Como llegar?</a></li>
         <li><a href="/#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -305,6 +306,27 @@ include dirname(__FILE__) . '/config.php';
     </div>
 
   </section>
+
+  <section id="comollegar">
+    <h2>¿Cómo llegar?</h2>
+
+    <div class="container">
+      <div id="map">
+
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <a href="https://goo.gl/maps/fiiyfvzksRRcYCZ9A" class="btn btn-earth" target="_blank">
+        Abrir en google maps
+      </a>
+    </div>
+
+
+  </section>
+
   <footer id="contacto">
 
     <div class="container">
