@@ -58,7 +58,7 @@ export class MultiItemCarousel {
     const _this = this
     carousel.dataset.carouselId = Date.now().toString()
 
-    if(isMobileDevice){
+    if(isMobileDevice()){
       this.startSwipeDetection(carousel)
       this.indicateCanSwipe(carousel)
     }

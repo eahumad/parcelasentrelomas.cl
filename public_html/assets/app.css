@@ -7,6 +7,8 @@
   --color-background: 251,251,251;
   --color-text: 17, 39, 25;
   --color-logo: #56a044;
+  --color-title: var(--color-secondary);
+  --color-head-cotizar: var(--color-primary);
   --tipo-title: "Staatliches", Impact, sans-serif;
   --tipo-principal: "Montserrat", Helvetica, Arial, sans-serif;
 }
@@ -19,6 +21,8 @@
     --color-secondary: 19,122,99;
     --color-background: 19,122,99;
     --color-text: 239,251,241;
+    --color-title: var(--color-text);
+    --color-head-cotizar: 189, 215, 150;
     --color-logo: #56a044;
   }
 }
@@ -31,6 +35,7 @@
     --color-secondary: 19,122,99;
     --color-background: 19,122,99;
     --color-text: 239,251,241;
+    --color-title: white;
     --color-logo: #56a044;
   }
 }
@@ -141,6 +146,8 @@ svg {
 
 /* Configuramos la tipografía para toda la web */
 body {
+  max-width: 100vw;
+  overflow-x: hidden;
   min-height: 100vh;
   font-size: 100%;
   font-family: var(--tipo-principal);
@@ -182,7 +189,7 @@ p {
   filter: invert(20%) sepia(73%) saturate(3449%) hue-rotate(140deg) brightness(103%) contrast(117%);
 }
 
-.svg-orange, #inicio div img {
+.svg-orange {
   filter: invert(100%) sepia(78%) saturate(3974%) hue-rotate(-60deg) brightness(120%) contrast(88%);
 }
 
@@ -210,7 +217,7 @@ p {
   transform: rotate(-45deg);
 }
 
-.button, #cotizar ul li a, #comollegar a, #modal-nav ul li #link-cotizar {
+.button, #cotizar ul li a, #comollegar a, #inicio div a, #modal-nav ul li #link-cotizar {
   max-width: 700px;
   margin: auto;
   text-align: center;
@@ -219,7 +226,7 @@ p {
   border-radius: 15px;
   font-weight: 700;
 }
-.button img, #cotizar ul li a img, #comollegar a img, #modal-nav ul li #link-cotizar img {
+.button img, #cotizar ul li a img, #comollegar a img, #inicio div a img, #modal-nav ul li #link-cotizar img {
   display: inline;
   width: 30px;
   margin-bottom: -9px;
@@ -554,7 +561,7 @@ header > div .menu-button {
 
 #inicio {
   background-color: rgb(var(--color-primary));
-  padding-top: 86px;
+  padding-top: 82px;
   max-height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -566,6 +573,13 @@ header > div .menu-button {
   max-width: none;
   position: relative;
   height: calc(100vh - 86px);
+  filter: brightness(0.7);
+}
+#inicio > video {
+  position: absolute;
+  top: 0px;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 #inicio div {
   width: calc(100% - 30px);
@@ -573,32 +587,23 @@ header > div .menu-button {
   margin-left: 15px;
   margin-right: 15px;
   bottom: 30px;
+  margin-bottom: 40vh;
 }
-#inicio div img {
-  position: absolute;
-  width: 40%;
-  margin: auto;
-  bottom: 30%;
-}
-@media (min-width: 1000px) {
-  #inicio div img {
-    margin-left: 5%;
-    width: 20%;
-  }
+#inicio div a {
+  background-color: rgb(var(--color-head-cotizar));
+  max-width: 200px;
+  margin-top: 5vh;
 }
 #inicio div h1 {
-  text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.4rem;
-  color: rgb(var(--color-secondary));
+  font-size: 1.7rem;
+  color: rgb(var(--color-title));
+  text-align: center;
 }
-@media (min-width: 1000px) {
-  #inicio div h1 {
-    width: 40%;
-    margin-left: 5%;
-    font-size: 2.2rem;
-    line-height: 1em;
-  }
+#inicio div h1 span {
+  text-transform: uppercase;
+  font-size: 1.9rem;
+  line-height: 10vh;
 }
 
 #proyecto {

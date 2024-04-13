@@ -331,7 +331,7 @@ var MultiItemCarousel = /*#__PURE__*/function () {
     value: function initCarousel(carousel) {
       var _this = this;
       carousel.dataset.carouselId = Date.now().toString();
-      if (_utils_js__WEBPACK_IMPORTED_MODULE_0__.isMobileDevice) {
+      if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isMobileDevice)()) {
         this.startSwipeDetection(carousel);
         this.indicateCanSwipe(carousel);
       }
