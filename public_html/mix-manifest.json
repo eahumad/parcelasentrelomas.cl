@@ -1,6 +1,6 @@
 {
-    "/assets/app.js": "/assets/app.js?id=c4279df738caba41d5d3b02ff190e47b",
-    "/assets/app.css": "/assets/app.css?id=0cd5fa81eb1af05c8e8e7c2da7ebd36e",
+    "/assets/app.js": "/assets/app.js?id=9ae1afab332373fa3cc5410ccbbb2741",
+    "/assets/app.css": "/assets/app.css?id=2fa9d4102f38772fb2017036c708a463",
     "/images/banner.webp": "/images/banner.webp?id=d2b4c9affcc2486d96c69896cf378a4a",
     "/images/banner2.webp": "/images/banner2.webp?id=163f6e6194491b0e82cd9b20eb565234",
     "/images/favicon.webp": "/images/favicon.webp?id=433c52a22740e9dc0f82fe696e9f5ae5",
@@ -696,5 +696,7 @@
     "/favicon.png": "/favicon.png?id=6b0f8e0a9000cd7f42b3adf2976ffa04",
     "/templates/contacto.html": "/templates/contacto.html?id=3688e7ed211506c5fc242c0c7cfff51f",
     "/images/pin.webp": "/images/pin.webp?id=8d5f051255abcff037ad3d1120602cf4",
-    "/images/iconos/maps.svg": "/images/iconos/maps.svg?id=cca27d1aa30ec82900caadb240b4a45b"
+    "/images/iconos/maps.svg": "/images/iconos/maps.svg?id=cca27d1aa30ec82900caadb240b4a45b",
+    "/images/iconos/hand.webp": "/images/iconos/hand.webp?id=9426060002cd17f663badd2bce363908",
+    "/images/iconos/hand_white.webp": "/images/iconos/hand_white.webp?id=889dcb8eeca3df9f0d9f1e6eccf00393"
 }
