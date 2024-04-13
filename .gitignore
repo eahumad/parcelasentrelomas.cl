@@ -4,3 +4,4 @@ node_modules
 .vscode
 .sass-cache
 .env
+public_html

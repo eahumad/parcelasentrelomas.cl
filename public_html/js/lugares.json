@@ -1,6 +1,0 @@
-[
-  { "nombre":"San Clemente",  "pitch":-1, "yaw":-27, "visible": true, "isLugar":true },
-  { "nombre":"Parque nacional Radal Siete Tazas",  "pitch":3.7, "yaw":120, "visible": true, "isLugar":true },
-  { "nombre":"Lago Colbún",  "pitch":2, "yaw":-126, "visible": true, "isLugar":true },
-  { "nombre":"Vilches",  "pitch":4, "yaw":-172, "visible": true, "isLugar":true }
-]
