@@ -95,7 +95,7 @@ export class Panoramico {
 
 
 
-    document.getElementById("panorama").style.height = params.height + "px"
+    //document.getElementById("panorama").style.height = params.height + "px"
 
    /*  this.viewer = pannellum.viewer('panorama', {
       "sceneId":"main",

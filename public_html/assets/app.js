@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (anchor) {
         window.location.replace('#' + anchor);
       }
-    }, 500);
+    }, 700);
   }, 500);
 });
 
@@ -91,14 +91,17 @@ var ComoLlegar = /*#__PURE__*/function () {
         center: myLatLng,
         zoom: 11,
         disableDefaultUI: true,
-        styles: _json_mapstyle_json__WEBPACK_IMPORTED_MODULE_0__
+        styles: _json_mapstyle_json__WEBPACK_IMPORTED_MODULE_0__,
+        mapId: 'map_entre_lomas'
       };
       var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-      var marker = new google.maps.Marker({
+      var pin = document.createElement("img");
+      pin.src = 'images/pin.webp';
+      var marker = new google.maps.marker.AdvancedMarkerElement({
         position: myLatLng,
         map: map,
         title: 'Entre Lomas',
-        icon: 'images/pin.webp'
+        content: pin
       });
       var customButtonDiv = document.createElement('div');
       customButtonDiv.className = 'custom-buttons';
@@ -272,6 +275,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   MultiItemCarousel: () => (/* binding */ MultiItemCarousel)
 /* harmony export */ });
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ "./src/js/utils.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -279,6 +283,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 var MultiItemCarousel = /*#__PURE__*/function () {
   function MultiItemCarousel() {
     _classCallCheck(this, MultiItemCarousel);
@@ -295,6 +300,14 @@ var MultiItemCarousel = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "isCarouselVisible",
+    value: function isCarouselVisible(carousel) {
+      var threshold = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 200;
+      var above = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.checkVisible)(carousel, threshold, 'above');
+      var below = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.checkVisible)(carousel, threshold, 'below');
+      return !(above || below);
+    }
+  }, {
     key: "setCarouselInterval",
     value: function setCarouselInterval(carousel, intervalTime) {
       var _this = this;
@@ -303,6 +316,10 @@ var MultiItemCarousel = /*#__PURE__*/function () {
         clearInterval(this.intervals[carouselId]);
       }
       var interval = setInterval(function () {
+        if (_this.isCarouselVisible(carousel)) {
+          console.log('está visible');
+          return;
+        }
         if (!_this.changeItemsPosition('next', carousel)) {
           carousel.querySelector('.mic-indicator').click();
         }
@@ -314,6 +331,10 @@ var MultiItemCarousel = /*#__PURE__*/function () {
     value: function initCarousel(carousel) {
       var _this = this;
       carousel.dataset.carouselId = Date.now().toString();
+      if (_utils_js__WEBPACK_IMPORTED_MODULE_0__.isMobileDevice) {
+        this.startSwipeDetection(carousel);
+        this.indicateCanSwipe(carousel);
+      }
       var mics = carousel.querySelectorAll('.mic-arrow');
       mics.forEach(function (mic) {
         mic.onclick = function (e) {
@@ -345,8 +366,32 @@ var MultiItemCarousel = /*#__PURE__*/function () {
         };
       });
       if (intervalTime) {
-        this.setCarouselInterval(carousel, intervalTime);
+        _this.setCarouselInterval(carousel, intervalTime);
       }
+    }
+  }, {
+    key: "startSwipeDetection",
+    value: function startSwipeDetection(carousel) {
+      var _this = this;
+      (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.detectSwipe)(carousel);
+      carousel.addEventListener('swipe', function (ev) {
+        console.log(ev.detail.direction);
+        _this.changeItemsPosition(ev.detail.direction, carousel);
+      });
+    }
+  }, {
+    key: "indicateCanSwipe",
+    value: function indicateCanSwipe(carousel) {
+      var _this = this;
+      var bounced = carousel.dataset.bounced;
+      setTimeout(function () {
+        if (!bounced && _this.isCarouselVisible(carousel, 300)) {
+          carousel.dataset.bounced = 1;
+          (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.doBounce)(carousel, '.mic-scroll-wrapper');
+          (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.showSwipeHandIcon)(carousel);
+        }
+        _this.indicateCanSwipe(carousel);
+      }, 1000);
     }
   }, {
     key: "getWidthAjust",
@@ -397,7 +442,6 @@ var MultiItemCarousel = /*#__PURE__*/function () {
       }
 
       //cambiar active en indicator
-
       var idx = carousel.dataset.currentPosition;
       if (idx < 9 && idx >= 0) {
         var indicator = carousel.querySelector('.mic-indicator.active');
@@ -550,7 +594,7 @@ var Panoramico = /*#__PURE__*/function () {
             return _this3.getJson('lugares');
           case 7:
             lugares = _context5.sent;
-            document.getElementById("panorama").style.height = params.height + "px";
+            //document.getElementById("panorama").style.height = params.height + "px"
 
             /*  this.viewer = pannellum.viewer('panorama', {
                "sceneId":"main",
@@ -586,7 +630,7 @@ var Panoramico = /*#__PURE__*/function () {
               var cords = _this.viewer.mouseEventToCoords(e);
               //console.log(cords)
             });
-          case 11:
+          case 10:
           case "end":
             return _context5.stop();
         }
@@ -798,6 +842,92 @@ var Slider = /*#__PURE__*/function () {
   }]);
   return Slider;
 }();
+
+/***/ }),
+
+/***/ "./src/js/utils.js":
+/*!*************************!*\
+  !*** ./src/js/utils.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   checkVisible: () => (/* binding */ checkVisible),
+/* harmony export */   detectSwipe: () => (/* binding */ detectSwipe),
+/* harmony export */   doBounce: () => (/* binding */ doBounce),
+/* harmony export */   isMobileDevice: () => (/* binding */ isMobileDevice),
+/* harmony export */   showSwipeHandIcon: () => (/* binding */ showSwipeHandIcon)
+/* harmony export */ });
+function checkVisible(elm, threshold, mode) {
+  threshold = threshold || 0;
+  mode = mode || 'visible';
+  var rect = elm.getBoundingClientRect();
+  var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+  var above = rect.bottom - threshold < 0;
+  var below = rect.top - viewHeight + threshold >= 0;
+  return mode === 'above' ? above : mode === 'below' ? below : !above && !below;
+}
+function detectSwipe(elm) {
+  var initialX = null;
+  elm.addEventListener('touchstart', function (event) {
+    initialX = event.touches[0].clientX;
+  });
+  elm.addEventListener('touchmove', function (event) {
+    if (!initialX) {
+      return;
+    }
+    var currentX = event.touches[0].clientX;
+    var diffX = currentX - initialX;
+    if (Math.abs(diffX) > 50) {
+      // Consideramos un desplazamiento de al menos 50px para ser un swipe
+      event.preventDefault(); // Evita el desplazamiento predeterminado del navegador
+
+      var direction = 'next';
+      if (diffX > 0) {
+        direction = 'prev';
+      }
+      var swipeEvent = new CustomEvent('swipe', {
+        detail: {
+          direction: direction
+        }
+      });
+      elm.dispatchEvent(swipeEvent);
+      initialX = null;
+    }
+  });
+}
+function doBounce(elm, scrollwrapperclass) {
+  var scrollWrapper = elm.querySelector(scrollwrapperclass);
+  var width = scrollWrapper.clientWidth;
+  scrollWrapper.scroll({
+    left: width / 3,
+    behavior: 'smooth'
+  });
+  setTimeout(function () {
+    scrollWrapper.scroll({
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, 300);
+}
+function showSwipeHandIcon(elm) {
+  // Crear elemento de imagen
+  var swipeHand = document.createElement('img');
+  swipeHand.src = '/images/iconos/hand_white.webp';
+  swipeHand.className = 'swipe-hand';
+
+  // Mostrar imagen sobre el elemento dado
+  elm.appendChild(swipeHand);
+
+  // Eliminar la imagen después de la animación
+  setTimeout(function () {
+    elm.removeChild(swipeHand);
+  }, 1600);
+}
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
 /***/ }),
 

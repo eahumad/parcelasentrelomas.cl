@@ -11,17 +11,21 @@ export class ComoLlegar {
       center: myLatLng,
       zoom: 11,
       disableDefaultUI: true,
-      styles: mapstyle
+      styles: mapstyle,
+      mapId: 'map_entre_lomas'
     }
 
     const map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
-    const marker = new google.maps.Marker({
+    const pin = document.createElement("img");
+    pin.src = 'images/pin.webp';
+    const marker = new google.maps.marker.AdvancedMarkerElement({
       position: myLatLng,
       map: map,
       title: 'Entre Lomas',
-      icon: 'images/pin.webp'
+      content: pin,
     })
+
 
     const customButtonDiv = document.createElement('div')
     customButtonDiv.className = 'custom-buttons'

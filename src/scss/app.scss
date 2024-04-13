@@ -16,3 +16,28 @@
 @import 'slider';
 
 
+.swipe-hand {
+  $hand-width: 150px;
+  width: $hand-width;
+  margin-left: calc(50vw - ($hand-width / 2));
+  position: absolute;
+  margin-top: calc( 100vh -  160vh );
+  transform-origin: center;
+  z-index: 9999;
+  animation: swipeAnimation 1.5s linear infinite;
+}
+
+@keyframes swipeAnimation {
+  0%, 100% {
+    transform: rotate(20deg);
+  }
+  40% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  90% {
+    transform: rotate(20deg);
+  }
+}

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if( anchor ) {
         window.location.replace('#'+anchor)
       }
-    }, 500)
+    }, 700)
 
   }, 500)
 
