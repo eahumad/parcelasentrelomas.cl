@@ -1,6 +1,6 @@
 [
-  { "nombre":"San Clemente",  "pitch":-1, "yaw":-27, "visible": true, "isLugar":true },
-  { "nombre":"Parque nacional Radal Siete Tazas",  "pitch":3.7, "yaw":120, "visible": true, "isLugar":true },
-  { "nombre":"Lago Colbún",  "pitch":2, "yaw":-126, "visible": true, "isLugar":true },
-  { "nombre":"Vilches",  "pitch":4, "yaw":-172, "visible": true, "isLugar":true }
+  { "nombre":"San Clemente <br> a 35.5 kms",  "pitch":-2.5, "yaw":-27, "visible": true, "isLugar":true },
+  { "nombre":"Parque nacional Radal Siete Tazas <br> a 37 kms",  "pitch":2.7, "yaw":120, "visible": true, "isLugar":true },
+  { "nombre":"Lago Colbún <br> a 38.5 kms",  "pitch":-1, "yaw":-126, "visible": true, "isLugar":true },
+  { "nombre":"Entrada Altos de Lircay <br> a 52 kms",  "pitch":-0.3, "yaw":-172, "visible": true, "isLugar":true }
 ]
