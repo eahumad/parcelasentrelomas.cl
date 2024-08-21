@@ -13,3 +13,8 @@
 .svg-orange {
   filter: invert(100%) sepia(78%) saturate(3974%) hue-rotate(-60deg) brightness(120%) contrast(88%);
 }
+
+
+.svg-boxes-icon {
+  filter: var(--filter-svg-boxes-icon);
+}
