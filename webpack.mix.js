@@ -1,4 +1,5 @@
 let mix = require('laravel-mix')
+require('laravel-mix-serve');
 
 mix.setPublicPath('public_html/')
 
@@ -54,3 +55,4 @@ mix.webpackConfig({
   ]
 });
 
+mix.serve();

@@ -4,7 +4,7 @@
     "multiRes": {
         "path": "/%l/%s%y_%x",
         "fallbackPath": "/fallback/%s",
-        "extension": "webp",
+        "extension": "jpg",
         "tileResolution": 512,
         "maxLevel": 4,
         "cubeResolution": 2600
