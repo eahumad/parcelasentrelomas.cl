@@ -9,10 +9,13 @@
   --color-title : var(--color-secondary);
   --color-head-cotizar: var(--color-primary);
 
+  --color-bg-hotspot-lugar: 255, 255, 255,0.7;
+
   --tipo-title  : 'Staatliches', Impact, sans-serif;
   --tipo-principal   : 'Montserrat', Helvetica, Arial, sans-serif;
   
   --filter-svg-boxes-icon: invert(20%) sepia(73%) saturate(3449%) hue-rotate(140deg) brightness(103%) contrast(117%);
+  
 }
 
 
@@ -27,6 +30,8 @@
     --color-text: 239,251,241;
     --color-title : var(--color-text);
     --color-head-cotizar: 189, 215, 150;
+
+    --color-bg-hotspot-lugar: 10,58,42,0.7;
     
     --color-logo : #56a044;
     --filter-svg-boxes-icon: invert(100%) sepia(78%) saturate(3974%) hue-rotate(-60deg) brightness(120%) contrast(88%);
