@@ -15,7 +15,7 @@
   { "numero":15, "tipo":"Habitacional", "estado":"Disponible",  "mts":"5000",   "clp":"32.000.000",   "pitch":-45, "yaw":113, "visible": true  },
   { "numero":16, "tipo":"Habitacional", "estado":"Disponible",  "mts":"5800",   "clp":"30.000.000",   "pitch":-49, "yaw":121, "visible": true  },
   { "numero":17, "tipo":"Habitacional", "estado":"Disponible",  "mts":"5000",   "clp":"30.000.000",   "pitch":-54, "yaw":134, "visible": true  },
-  { "numero":18, "tipo":"Habitacional", "estado":"Disponible",  "mts":"5400",   "clp":"35.000.000",   "pitch":-63, "yaw":118, "visible": true  },
+  { "numero":18, "tipo":"Habitacional", "estado":"Reservado",  "mts":"5400",   "clp":"35.000.000",   "pitch":-63, "yaw":118, "visible": true  },
   { "numero":19, "tipo":"Habitacional", "estado":"Disponible",  "mts":"6200",   "clp":"32.000.000",   "pitch":-65, "yaw":141, "visible": true  },
   { "numero":20, "tipo":"Habitacional", "estado":"Disponible",  "mts":"5400",   "clp":"32.000.000",   "pitch":-67, "yaw":157, "visible": true  },
   { "numero":21, "tipo":"Habitacional", "estado":"Disponible",  "mts":"5100",   "clp":"32.000.000",   "pitch":-67, "yaw":175, "visible": true  },
